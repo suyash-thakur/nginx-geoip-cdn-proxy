@@ -2,6 +2,18 @@
 
 This GitHub repository contains a custom Nginx configuration that utilizes the GeoIP module to route incoming traffic to a suitable backend server based on the country of origin. It also incorporates a caching mechanism to improve performance and reduce server load. This configuration is specifically designed for use as a CDN proxy, making it an efficient solution for serving content to users across the globe.
 
+```mermaid
+graph TD;
+    A[Client] -- Sends request to --> B[Nginx CDN Proxy];
+    B -- Routes request to --> C[Backend Server];
+    C -- Processes request and sends response to --> B;
+    B -- Caches response and sends response to --> A;
+    B -- Caches response for future requests --> D[Cache Storage]; 
+     subgraph GeoIP
+        E[GeoIP Database] -- provides location data for --> B
+    end
+
+```
 
 ## Getting Started
 
